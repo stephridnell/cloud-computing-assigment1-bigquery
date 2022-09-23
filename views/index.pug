@@ -1,0 +1,46 @@
+html
+  head
+    title= title
+    style
+      include style.css
+  body
+    h2 1. Show top 10 time slots (year and month) with the highest trade value (i.e. import value + export value).
+    table
+      tbody
+        thead
+          th
+          th Time ref
+          th Trade value
+        each val, index in query1Rows
+          tr
+              td(class='text-center')= index + 1
+              td= val.time_ref
+              td(class='text-right')= val.trade_value
+    h2 2. Show top 50 countries with the highest total trade deficit value (i.e. import value - export value) of goods from 2014 to 2016 where status is “F”.
+    table
+      tbody
+        thead
+          th
+          th Country label
+          th Trade deficit value
+          th Product type
+          th Status
+        each val, index in query2Rows
+          tr
+              td(class='text-center')= index + 1
+              td= val.country_label
+              td(class='text-right')= val.trade_deficit_value
+              td(class='text-center')= val.product_type
+              td(class='text-center')= val.status
+    h2 3. Show top 30 services with the highest total trade surplus value (i.e. export value - import value) in the top 10 time slots of Query Result 1 and the top 50 countries of Query Result 2. 
+    table
+      tbody
+        thead
+          th
+          th Service label
+          th Trade surplus value
+        each val, index in query3Rows
+          tr
+              td(class='text-center')= index + 1
+              td= val.service_label
+              td(class='text-right')= val.trade_surplus_value
